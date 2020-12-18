@@ -8,6 +8,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="instructions">
+    <h3 style="font-size: 3em;">Compose sequence</h3>
+    <p style="font-size: 2em;">
+    <kbd>&uarr;</kbd>
+    <kbd>&uarr;</kbd>
+    <kbd>&darr;</kbd>
+    <kbd>&darr;</kbd>
+    <kbd>&larr;</kbd>
+    <kbd>&rarr;</kbd>
+    <kbd>&larr;</kbd>
+    <kbd>&rarr;</kbd>
+    <kbd>b</kbd>
+    <kbd>a</kbd>
+    </p>
+  </div>
 <script>
   window.onkeydown = () => {
     const event = window.event
@@ -40,6 +55,10 @@
         newArray = []
         count = 0
         countTrue = 0
+
+        const instructions = document.getElementsByClassName('instructions')[0]
+        instructions.remove()
+
         displayMessage()
       }
     }
@@ -50,6 +69,7 @@
     }
 
     displayMessage = () => {
+
       const body = document.getElementsByTagName('body')[0]
       body.style.background = 
       'url(https://2eo55h24wdu6nyeph4frss2b76-wpengine.netdna-ssl.com/wp-content/uploads/2018/04/unicrn_header.jpg)'

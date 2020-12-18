@@ -3,7 +3,6 @@ window.onload = () => {
 
     const exercises = 
     ['Drum Kit', 
-    'Css Clock', 
     'Flex Panel Gallery',
     'Hold Shift And Check Checkbox', 
     'Key Sequence Detection', 
@@ -16,8 +15,6 @@ window.onload = () => {
     const sources = {
         drumKit: 
         './01 - JavaScript Drum Kit/index-START.html',
-        cssClock: 
-        './02 - JS and CSS Clock/index-START.html',
         flexPanelGallery: 
         './05 - Flex Panel Gallery/index-START.html',
         holdShiftAndCheckCheckbox: 

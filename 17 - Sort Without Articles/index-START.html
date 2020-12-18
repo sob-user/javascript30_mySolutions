@@ -47,7 +47,28 @@
 
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+const newIndex = [11, 4, 8, 1, 6, 3, 12, 9, 2, 0, 5, 10, 7]
+const pushBand =[]
 
+
+
+window.onload = function() {
+  const newArrayBands = newIndex.map((newIndex)=>{
+  bands.map((band, index)=>{
+    if(newIndex === index) {
+      pushBand.push(band)
+    }
+  })
+})
+
+  const ulBands = document.getElementById('bands')
+
+  pushBand.map((band, index) => {
+    const createLi = document.createElement('li')
+    ulBands.appendChild(createLi)
+    createLi.innerHTML = band
+  })
+}
 
 </script>
 

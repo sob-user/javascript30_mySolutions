@@ -26,6 +26,7 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -105,7 +106,59 @@
   </div>
 
   <script>
+    window.onload = () => {
+      const divPanels = document.getElementsByClassName('panels')[0]
 
+      const divPanel = divPanels.children
+      const passIntoArray = [].slice.call(divPanel)
+      const styleAndReturnChild = passIntoArray.map((panel, index) => {
+        panel.style.display = 'flex'
+        panel.style.flex = '1'
+        panel.style.justifyContent = 'center'
+        panel.style.flexDirection = 'column'
+          panel.onclick = () => {
+            displayAnimation(styleAndReturnChild, index)
+            if(panel.style.flex === '1 1 0%') {
+              panel.style.flex = '5'
+            }
+            else if(panel.style.flex === '5 1 0%'){
+              panel.style.flex = '1'
+            }
+          }
+
+          return panel.children
+        })
+      
+      styleAndReturnChild.map((div) => {
+        div[0].style.transform = 'translateY(-50vh)'
+        div[2].style.transform = 'translateY(+50vh)'
+      })
+
+      displayAnimation = (styleAndReturnChild, index) => {
+          if(styleAndReturnChild[index][0].style.transform !== 'translateY(0vh)') {
+          styleAndReturnChild[index][0].style.transform = 'translateY(0vh)'
+          styleAndReturnChild[index][2].style.transform = 'translateY(0vh)'
+          styleAndReturnChild[index][0].style.fontSize = '4em'
+          styleAndReturnChild[index][2].style.fontSize = '4em'
+          styleAndReturnChild[index][1].style.fontSize = '8em'
+          styleAndReturnChild[index][0].style.height = '33%'
+          styleAndReturnChild[index][2].style.height = '33%'
+          styleAndReturnChild[index][0].style.display = 'flex'
+          styleAndReturnChild[index][2].style.display = 'flex'
+          styleAndReturnChild[index][0].style.justifyContent = 'center'
+          styleAndReturnChild[index][2].style.justifyContent = 'center'
+          styleAndReturnChild[index][0].style.alignItems = 'center'
+          styleAndReturnChild[index][2].style.alignItems = 'center'
+          }
+          else {
+          styleAndReturnChild[index][0].style.transform = 'translateY(-50vh)'
+          styleAndReturnChild[index][2].style.transform = 'translateY(+50vh)'
+          styleAndReturnChild[index][0].style.fontSize = '2em'
+          styleAndReturnChild[index][2].style.fontSize = '2em'
+          styleAndReturnChild[index][1].style.fontSize = '4em'
+          }
+        }
+    }
   </script>
 
 

@@ -54,7 +54,34 @@
   </div>
 
 <script>
+  document.onscroll = function () {
+  const divMain = document.getElementById('main')
+  const event = divMain.offsetTop
+  if(window.pageYOffset > event) {
+    toPositionFixed()
+  }
+  else{
+    toInitialPosition()
+  }
+  }
 
+  function toPositionFixed() {
+    const divMain = document.getElementById('main')
+    divMain.style.position = 'fixed'
+    divMain.style.boxShadow = '0 5px 0 rgba(0,0,0,0.1)'
+    
+    const logo = document.getElementsByClassName('logo')[0]
+    logo.style.maxWidth = '100%'
+  }
+
+  function toInitialPosition() {
+    const divMain = document.getElementById('main')
+    divMain.style.position = 'relative'
+    divMain.style.boxShadow = 'none'
+
+    const logo = document.getElementsByClassName('logo')[0]
+    logo.style.maxWidth = '0'
+  }
 </script>
 
 </body>

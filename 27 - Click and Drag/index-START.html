@@ -35,6 +35,29 @@
   </div>
 
 <script>
+
+window.onload = function() {
+    const divItems = document.getElementsByClassName('items')[0]
+
+    let ifclassListActiveExist = null
+
+    divItems.onmousedown = () => {
+    divItems.classList.add('active')
+    let classListActive = divItems.classList.contains('active')
+    ifclassListActiveExist = classListActive
+
+    divItems.addEventListener('mousemove', () => {
+    if(ifclassListActiveExist === true) {
+    divItems.scrollBy( -event.movementX/2, 0)
+    }})
+    }
+
+    divItems.onmouseup = () => {
+      divItems.classList.remove('active')
+      let classListActive = divItems.classList.contains('active')
+      ifclassListActiveExist = classListActive
+    }
+  }
 </script>
 
   </body>

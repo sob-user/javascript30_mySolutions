@@ -3,10 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
-  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+  <!-- <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script> -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 <script>
+  window.onkeydown = () => {
+    const event = window.event
+    const bindKey = event.key
+    pushKeyOnArray(bindKey)
+  }
+
+  const goodKey = 
+  ['ArrowUp', 'ArrowUp',
+  'ArrowDown', 'ArrowDown',
+  'ArrowLeft', 'ArrowRight',
+  'ArrowLeft', 'ArrowRight',
+  'b', 'a']
+
+  let newArray = []
+  let count = 0
+
+  pushKeyOnArray = (bindKey) => {
+    newArray.push(bindKey)
+    compareArrays()
+  }
+
+  let countTrue = 0
+
+  compareArrays = () => {
+    if(newArray[count] === goodKey[count]) {
+      countTrue = countTrue + 1
+      count = count + 1
+      if(countTrue === goodKey.length) {
+        newArray = []
+        count = 0
+        countTrue = 0
+        displayMessage()
+      }
+    }
+    else {
+      newArray = []
+      count = 0
+      countTrue = 0
+    }
+
+    displayMessage = () => {
+      const body = document.getElementsByTagName('body')[0]
+      body.style.background = 
+      'url(https://2eo55h24wdu6nyeph4frss2b76-wpengine.netdna-ssl.com/wp-content/uploads/2018/04/unicrn_header.jpg)'
+      body.style.backgroundSize = 'cover'
+
+      const h1Message = document.createElement('h1')
+      h1Message.innerHTML = 'You Cornified !'
+      h1Message.style.color = 'whitesmoke'
+      h1Message.style.textAlign = 'center'
+      h1Message.style.fontFamily = "'Xanh Mono', monospace"
+
+      body.appendChild(h1Message)
+    }
+  }
 </script>
 </body>
 </html>

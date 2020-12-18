@@ -58,8 +58,20 @@
       };
     }
 
-  </script>
+    document.onscroll = function () {
+    const images = document.getElementsByTagName('img')
+    const passIntoArray = [].slice.call(images)
 
+    passIntoArray.map((img) => {
+      if(window.pageYOffset > img.offsetTop) {
+      img.classList.add('active')
+      }
+      else{
+      img.classList.remove('active')
+      }
+    })
+  }
+  </script>
   <style>
     html {
       box-sizing: border-box;

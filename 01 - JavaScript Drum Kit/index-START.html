@@ -10,7 +10,7 @@
 
   <div class="keys">
     <div data-key="65" class="key">
-      <kbd>A</kbd>
+      <kbd class="A">A</kbd>
       <span class="sound">clap</span>
     </div>
     <div data-key="83" class="key">
@@ -58,7 +58,49 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+window.onkeypress = function () {
+    const event = window.event
+    const bindKey = event.key
+    const uppercase = bindKey.toUpperCase()
+    const convertInCharCode = uppercase.charCodeAt(0)
+    compare(convertInCharCode)
+};
 
+const bindKeys = document.getElementsByClassName('keys')[0].children
+const passIntoArray = [].slice.call(bindKeys)
+
+function compare(charCode) {
+passIntoArray.map((item) => {
+Number(item.dataset.key) === charCode ? findIndex(charCode) : null
+})
+}
+
+function findIndex(charCode) {
+  const songs = document.getElementsByTagName('audio')
+  const passIntoArray = [].slice.call(songs)
+  passIntoArray.map((item, index) => {
+    Number(item.dataset.key) === charCode ? playSound(index) : null
+  })
+}
+
+function playSound(index) {
+  modifyCss(index)
+  document.getElementsByTagName('audio')[index].play()
+}
+
+function modifyCss(index) {
+  const divKeys = document.getElementsByClassName('key')[index]
+  divKeys.style.border = ".4rem solid yellow"
+  divKeys.style.padding = "2rem"
+  counter(divKeys)
+}
+
+function counter(divKeys) {
+  setTimeout(() =>{
+    divKeys.style.border = ".4rem solid black"
+    divKeys.style.padding = "1rem"
+  }, 500)
+}
 </script>
 
 

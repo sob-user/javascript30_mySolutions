@@ -29,12 +29,27 @@
   }
 
   h1 {
-    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    /* text-shadow: 10px 10px 0 rgba(0,0,0,1); */
     font-size: 100px;
   }
   </style>
 
 <script>
+  window.onmousemove = () => {
+    var xMousePosition = event.clientX;
+    var yMousePosition = event.clientY;
+    animateTextShadow(xMousePosition, yMousePosition)
+  }
+  animateTextShadow = (xMousePosition, yMousePosition) => {
+    var xMiddlePage = window.innerWidth / 2;
+    var yMiddlePage = window.innerHeight / 2;
+    const divHero = document.getElementsByClassName('hero')[0].children[0]
+    divHero.style.textShadow = 
+    `rgba(255, 0, 255, 0.7) ${xMousePosition - xMiddlePage}px ${xMousePosition - xMiddlePage}px 0px,
+    rgba(0, 255, 255, 0.7) ${(-yMousePosition) - (-yMiddlePage)}px ${(-yMousePosition) - (-yMiddlePage)}px 0px,
+    rgba(0, 255, 0, 0.7) ${xMousePosition - xMiddlePage}px ${(-yMousePosition) - (-yMiddlePage)}px 0px,
+    rgba(0, 0, 255, 0.7) ${(-yMousePosition) - (-yMiddlePage)}px ${xMousePosition - xMiddlePage}px 0px`
+  }
 </script>
 </body>
 </html>

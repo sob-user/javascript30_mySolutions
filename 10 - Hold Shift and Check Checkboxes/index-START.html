@@ -96,6 +96,43 @@
   </div>
 
 <script>
+    window.onkeydown = () => {
+    const event = window.event
+    const bindKey = event.key
+    verifyIfShiftOnPress(bindKey)
+    }
+
+    verifyIfShiftOnPress = (bindKey) => {
+      if(bindKey === 'Shift') {
+        ifClickOnCheckBox()
+      }
+    }
+
+    let toggleIfShift = false
+
+    ifClickOnCheckBox = () => {
+    toggleIfShift = true
+
+      const checkBoxes = document.getElementsByTagName('input')
+      const passIntoArray = [].slice.call(checkBoxes)
+      passIntoArray.map((checkbox) => {
+        checkbox.onclick = function() {
+          passCheckedBoxesAtTrue()
+        }
+      })
+    }
+
+    passCheckedBoxesAtTrue = () => {
+      const items = document.getElementsByClassName('item')
+      const passIntoArray = [].slice.call(items)
+
+      if(toggleIfShift === true) {
+      passIntoArray.map((item) => {
+      item.children[0].checked = true
+      toggleIfShift = false
+      })
+      }
+    }
 </script>
 </body>
 </html>
